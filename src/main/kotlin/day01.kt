@@ -9,12 +9,12 @@ fun main() {
     val answerPartOneSmallInput = day01.partOne(smallInput)
     println("Answer to part one (small input): ${answerPartOneSmallInput}.")
     check(answerPartOneSmallInput == 24000)
-    println("Answer to part one (small input): ${day01.partOne(largeInput)}.")
+    println("Answer to part one (large input): ${day01.partOne(largeInput)}.")
 
     val answerPartTwoSmallInput = day01.partTwo(smallInput)
     println("Answer to part two (small input): ${answerPartTwoSmallInput}.")
     check(answerPartTwoSmallInput == 45000)
-    println("Answer to part two (small input): ${day01.partTwo(largeInput)}.")
+    println("Answer to part two (large input): ${day01.partTwo(largeInput)}.")
 }
 
 class Day01 {
