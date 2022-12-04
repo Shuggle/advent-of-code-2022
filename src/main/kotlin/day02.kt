@@ -12,11 +12,11 @@ fun main() {
     println("Answer to part one (small input): ${answerPartOneSmallInput}.")
     check(answerPartOneSmallInput == 15)
     println("Answer to part one (large input): ${day02.partOne(largeInput)}.")
-//
-//    val answerPartTwoSmallInput = day02.partTwo(smallInput)
-//    println("Answer to part two (small input): ${answerPartTwoSmallInput}.")
-//    check(answerPartTwoSmallInput == 45000)
-//    println("Answer to part two (small input): ${day02.partTwo(largeInput)}.")
+
+    val answerPartTwoSmallInput = day02.partTwo(smallInput)
+    println("Answer to part two (small input): ${answerPartTwoSmallInput}.")
+    check(answerPartTwoSmallInput == 12)
+    println("Answer to part two (small input): ${day02.partTwo(largeInput)}.")
 }
 
 class Day02 {
@@ -25,15 +25,25 @@ class Day02 {
 
         input.forEach { row ->
             val shapes = row.split(" ").map { Shape(it) }
-            val score = Round(shapes[0], shapes[1]).getScores()
-            scores.add(score)
+            val round = Round(shapes[0], shapes[1])
+            scores.add(round.getScores())
         }
 
         return scores.sumOf { it[1] }
     }
 
     fun partTwo(input: List<String>): Int {
-        return -1
+        val scores = emptyList<IntArray>().toMutableList()
+
+        input.forEach { row ->
+            val shapes = row.split(" ").map { Shape(it) }
+
+            val round = Round(shapes[0], shapes[1])
+            round.setPlayerTwoShape(round.predictPlayerTwoShape())
+            scores.add(round.getScores())
+        }
+
+        return scores.sumOf { it[1] }
     }
 
     fun getSmallInput(): List<String> {
